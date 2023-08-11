@@ -1,4 +1,5 @@
 //EXAMINE THE DOCUMENT OBJECT //
+/*
 console.dir(document);
 console.log(document.domain);
 console.log(document. URL);
@@ -51,3 +52,22 @@ document.addEventListener("DOMContentLoaded", function() {
         listItems[2].style.backgroundColor = "green";
     }
 });
+ */
+// get elements by tag name
+ var li=document.getElementsByTagName('li');
+ console.log(li);
+ console.log(li[1]);
+ li[1].textContent='hello 2';
+ li[1].style.fontweight='bold';
+ li[4].style.background='yellow';
+
+ /*
+for(var i=0;i<li.length;i++)
+ {
+    li[1].style.background='#f4f4f4'
+ }
+ */
+
+ // query selector
+  //var header=document.querySelector('#main-header')
+//header.style.borderBottom='solid 4px #ccc'
