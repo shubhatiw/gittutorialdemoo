@@ -31,4 +31,23 @@ document.addEventListener("DOMContentLoaded", function() {
     addItemsHeading.style.fontWeight = "bold";
     addItemsHeading.style.color = "green";
 });
+var items=document.getElementsByClassName('list-group-item')
+console.log(items)
+console.log(items[1])
+items[1].textContent='Hello 2';
+document.addEventListener("DOMContentLoaded", function() {
+    const listItems = document.querySelectorAll("#items li");
 
+    listItems.forEach(item => {
+        item.style.fontWeight = "bold";
+        item.style.color = "blue";  // Change the color to your desired color
+    });
+});
+document.addEventListener("DOMContentLoaded", function() {
+    const listItems = document.querySelectorAll("#items li");
+
+    // Apply green background color to the 3rd list item (index 2)
+    if (listItems.length >= 3) {
+        listItems[2].style.backgroundColor = "green";
+    }
+});
