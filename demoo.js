@@ -69,7 +69,8 @@ for(var i=0;i<li.length;i++)
  */
 
  // query selector
-  var header=document.querySelector('#main-header')
+ 
+ /*var header=document.querySelector('#main-header')
 header.style.borderBottom='solid 4px #ccc'
 
 var input=document.querySelector('input')
@@ -96,7 +97,110 @@ item.style.color='red';
 //items.forEach(item => {
  //   item.style.color = 'light-green';
 //});
+/*
 var odd = document.querySelectorAll('li:nth-child(odd)');
 for(var i = 0; i < odd.length; i++){
 odd[i].style.backgroundColor = 'green';
 }
+*/
+
+//Traversing the dom//
+
+var itemList=document.querySelector('#items');
+//parent node
+//console.log(itemList.parentNode)
+//itemList.parentNode.style.backgroundColor='#f4f4f4'
+//console.log(itemList.parentNode.parentNode)
+
+//parent Element
+/*
+console.log(itemList.parentElement);
+itemList.parentElement.style.backgroundColor='#f4f4f4'
+console.log(itemList.parentElement.parentElement.parentElement)
+*/
+
+//child nodes
+
+//console.log(itemList.childNodes);
+
+/*
+console.log(itemList.children)
+console.log(itemList.children[1])
+itemList.children[1].style.backgroundColor='yellow'
+
+//FirstChild
+console.log(itemList.firstChild)
+
+//firstElementChild
+console.log(itemList.firstElementChild);
+itemList.firstElementChild.textContent='Hello1'
+
+//lastChild
+console.log(itemList.lastChild)
+//lastElementChild
+console.log(itemList.lastElementChild);
+itemList.lastElementChild.textContent='Hello 4'
+*/
+
+/*
+//nextSibling
+console.log(itemList.nextSibling);
+//nextElementSibling
+console.log(itemList.nextElementSibling)
+//previousSibling
+console.log(itemList.previousSibling);
+//previousElementSibling
+console.log(itemList.previousElementSibling);
+itemList.previousElementSibling.computedStyleMap.color='green'
+*/
+
+
+//create a element
+/*
+//create a div
+var newDiv=document.createElement('div');
+
+//ADD class
+newDiv.className='hello';
+
+//Add id
+newDiv.id='hello1';
+
+//Add attr
+newDiv.setAttribute('title','hello Div');;
+
+//create text node
+var newDivText=document.createTextNode('Hello world');
+
+//Add text to div
+newDiv.appendChild(newDivText)
+
+var container=document.querySelector('header.container')
+var h1=document.querySelector('header h1');
+
+console.log(newDiv);
+
+container.insertBefore(newDiv, h1);
+*/
+
+// Create a new text node with "Hello World"
+var helloText = document.createTextNode('Hello World');
+
+// Select the <h1> element within the header
+var h1 = document.querySelector('header h1');
+
+// Insert the new text node before the existing content of <h1>
+h1.insertBefore(helloText, h1.firstChild);
+
+// Create a new list item with the text "Hello"
+var helloListItem = document.createElement('li');
+helloListItem.textContent = 'Hello';
+
+// Select the first list item
+var firstListItem = document.querySelector('.list-group-item');
+
+// Get the parent element of the list
+var listParent = firstListItem.parentNode;
+
+// Insert the new list item before the first list item
+listParent.insertBefore(helloListItem, firstListItem);
