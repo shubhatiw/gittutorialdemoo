@@ -101,3 +101,6 @@ function filterItems(e){
     }
   });
 }
+console.log('hello')
+localStorage.setItem('name','shubham')
+console.log(localStorage.getItem('name'))

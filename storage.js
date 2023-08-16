@@ -1,0 +1,1 @@
+localStorage.setItem("myHTML", document.documentElement.innerHTML);
