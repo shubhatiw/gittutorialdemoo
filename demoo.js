@@ -182,7 +182,7 @@ console.log(newDiv);
 
 container.insertBefore(newDiv, h1);
 */
-
+/*
 // Create a new text node with "Hello World"
 var helloText = document.createTextNode('Hello World');
 
@@ -204,3 +204,5 @@ var listParent = firstListItem.parentNode;
 
 // Insert the new list item before the first list item
 listParent.insertBefore(helloListItem, firstListItem);
+*/
+ 
