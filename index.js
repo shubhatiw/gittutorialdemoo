@@ -71,9 +71,18 @@ function saveToLocalStorage(event) {
 
 function showUsersOnScreen(users) {
   const parentElem = document.getElementById('listofitems')
-  const childElem = document.createElement('li')
+  const childElem = document.createElement('li') 
   childElem.textContent = users.name + '  ' + users.email;
-  parentElem.appendChild(childElem)
+  const button= document.createElement('button')
+  button.textContent='delete'
+  button.onclick=()=>{
+    parentElem.removeChild(childElem)
+    localStorage.removeItem(users.email)
+  }
+ 
+  childElem.appendChild(button)
+  parentElem.appendChild(childElem) // append means adding objects/tag  at last
+
 }
 
 
