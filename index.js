@@ -48,5 +48,27 @@ event.preventDefault();
 const name=event.target.name.value;
 const email=event.target.email.value;
 localStorage.setItem('name', name);
-localStorage.setItem('email', email)
+localStorage.setItem('email', email);
+
+const obj = {
+  name,
+  email
+};
+
+// Retrieve existing users from localStorage or initialize an empty array
+let users = JSON.parse(localStorage.getItem('users')) || [];
+
+// Add the new user object to the array
+users.push(obj);
+
+// Store the updated array back in localStorage
+localStorage.setItem('users', JSON.stringify(users));
 }
+//In this corrected code, the obj variable contains the name and email properties for the current user. The code then retrieves the existing user array from localStorage (or initializes an empty array), pushes the obj into the array, and finally stores the updated array back in localStorage.
+
+//Also, make sure that you're calling this saveToLocalStorage function in response to the appropriate user action, such as submitting a form.
+
+
+
+
+
