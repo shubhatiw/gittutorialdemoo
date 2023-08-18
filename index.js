@@ -80,7 +80,18 @@ function showUsersOnScreen(users) {
     localStorage.removeItem(users.email)
   }
  
-  childElem.appendChild(button)
+  childElem.appendChild(button);
+
+  const editbutton=document.createElement('button')
+  editbutton.textContent='Edit'
+  editbutton.onclick=()=>{
+    const newName=prompt('Enter new name:',users.email)
+    if(newName !==null){
+      childElem.textContent=newName +'  '+users.email;
+      users.name=newName
+    }
+  }
+  childElem.appendChild(editbutton)
   parentElem.appendChild(childElem) // append means adding objects/tag  at last
 
 }
