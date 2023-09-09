@@ -6,7 +6,20 @@
     <title>Document</title>
 </head>
 <body>
-    <script src="randomm.js"></script>
+ <p> store your name </p>
+ <btn on click='myFunction()'>try it</btn>
+ <script>
+    function myFunction(){
+        if(typeof(Storage)!=='undefined'){
+            localStorage.getItem('lastname','shubham');
+            document.writegetElementById('result').innerHTML.localStorage.getItem('lastname');
+        }
+        else{
+            document.getElementById('result').innerHTML='JYOTI';
+        }
+    }
+ </script>
+ <p id='result'> </p>
 </body>
 </html>
 

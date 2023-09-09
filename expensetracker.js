@@ -1,86 +1,101 @@
-const expenseList = document.getElementById("expenseList");
+var expenseAmount = document.getElementById('expenseAmount');
+var description = document.getElementById('description');
+var category = document.getElementById('category');
+var expenseList = document.getElementById('expenseList');
 
-// Load expenses from local storage if available
-const savedExpenses = JSON.parse(localStorage.getItem("expenses")) || [];
-savedExpenses.forEach(expense => {
-  renderExpense(expense);
-});
 
 function addExpense() {
-  const expenseAmount = document.getElementById("expenseAmount").value;
-  const description = document.getElementById("description").value;
-  const category = document.getElementById("category").value;
-
-  const expense = {
-    amount: expenseAmount,
-    description: description,
-    category: category,
+  
+  var newExpense = {
+    amount: expenseAmount.value,
+    description: description.value,
+    category: category.value
   };
 
-  renderExpense(expense);
-  saveExpense(expense);
-  clearInputs();
+
+  var expenses = JSON.parse(localStorage.getItem('expenses')) || [];
+
+  
+  expenses.push(newExpense);
+
+
+  localStorage.setItem('expenses', JSON.stringify(expenses));
+
+
+  displayExpenses();
 }
 
-function renderExpense(expense) {
-  const li = document.createElement("li");
-  li.innerHTML = `${expense.amount}-${expense.description}-${expense.category} 
-                  <button onclick="editExpense('${expense.amount}')">Edit</button> 
-                  <button onclick="deleteExpense('${expense.amount}')">Delete</button>`;
-  expenseList.appendChild(li);
-}
 
-function saveExpense(expense) {
-  const savedExpenses = JSON.parse(localStorage.getItem("expenses")) || [];
-  savedExpenses.push(expense);
-  localStorage.setItem("expenses", JSON.stringify(savedExpenses));
-}
+function displayExpenses() {
+ 
+  var expenses = JSON.parse(localStorage.getItem('expenses')) || [];
 
-function deleteExpense(amount) {
-  const savedExpenses = JSON.parse(localStorage.getItem("expenses")) || [];
-  const updatedExpenses = savedExpenses.filter(expense => expense.amount !== amount);
-  localStorage.setItem("expenses", JSON.stringify(updatedExpenses));
+  
+  expenseList.innerHTML = '';
 
-  const liToDelete = [...expenseList.getElementsByTagName("li")].find(li =>
-    li.textContent.includes(`${amount}-`)
-  );
+ 
+  for (var i = 0; i < expenses.length; i++) {
+    var li = document.createElement('li');
+    li.textContent = 'Amount: ' + expenses[i].amount + ', Description: ' + expenses[i].description + ', Category: ' + expenses[i].category;
+    
+  
+    (function(i) {
+      var deleteButton = document.createElement('button');
+      deleteButton.textContent = 'Delete';
+      deleteButton.onclick = function() {
+        deleteExpense(i);
+      };
+      
+      var editButton = document.createElement('button');
+      editButton.textContent = 'Edit';
+      editButton.onclick = function() {
+        editExpense(i);
+      };
+      
+      li.appendChild(deleteButton);
+      li.appendChild(editButton);
+    })(i);
 
-  if (liToDelete) {
-    expenseList.removeChild(liToDelete);
+    expenseList.appendChild(li);
   }
 }
 
-function editExpense(amount) {
-  const savedExpenses = JSON.parse(localStorage.getItem("expenses")) || [];
-  const expenseToEdit = savedExpenses.find(expense => expense.amount === amount);
+function deleteExpense(index) {
 
-  if (expenseToEdit) {
-    const updatedAmount = prompt("Enter updated amount:", expenseToEdit.amount);
-    const updatedDescription = prompt("Enter updated description:", expenseToEdit.description);
-    const updatedCategory = prompt("Enter updated category:", expenseToEdit.category);
+  var expenses = JSON.parse(localStorage.getItem('expenses')) || [];
 
-    if (updatedAmount && updatedDescription && updatedCategory) {
-      expenseToEdit.amount = updatedAmount;
-      expenseToEdit.description = updatedDescription;
-      expenseToEdit.category = updatedCategory;
+  
+  expenses.splice(index, 1);
 
-      localStorage.setItem("expenses", JSON.stringify(savedExpenses));
+ 
+  localStorage.setItem('expenses', JSON.stringify(expenses));
 
-      // Refresh the displayed list of expenses
-      refreshExpenseList();
-    }
-  }
+  
+  displayExpenses();
 }
 
-function refreshExpenseList() {
-  expenseList.innerHTML = ""; // Clear the existing list
-  savedExpenses.forEach(expense => {
-    renderExpense(expense);
-  });
+function editExpense(index) {
+  
+  var expenses = JSON.parse(localStorage.getItem('expenses')) || [];
+
+
+  var expense = expenses[index];
+  
+  expenseAmount.value = expense.amount;
+  
+  description.value = expense.description;
+  
+  category.value = expense.category;
+
+  
+  expenses.splice(index, 1);
+
+  
+  localStorage.setItem('expenses', JSON.stringify(expenses));
+
+
+  
 }
 
-function clearInputs() {
-  document.getElementById("expenseAmount").value = "";
-  document.getElementById("description").value = "";
-  document.getElementById("category").value = "";
-}
+
+displayExpenses();
