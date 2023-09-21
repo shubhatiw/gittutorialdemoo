@@ -48,12 +48,9 @@ function displayExpenses() {
       
       var editButton = document.createElement('button');
       editButton.textContent = 'Edit';
-      editButton.onclick = function(index) {
-        return function(){
-          editExpense(index);
-        };
-        
-      }(i);
+      editButton.onclick = function() {
+        editExpense(i);
+      };
       
       li.appendChild(deleteButton);
       li.appendChild(editButton);
@@ -84,17 +81,20 @@ function editExpense(index) {
 
   var expense = expenses[index];
   
-  expenseAmount.value = expense.amount;
+  if(expense){ 
+    expenseAmount.value = expense.amount;
   
-  description.value = expense.description;
+    description.value = expense.description;
+    
+    category.value = expense.category;
   
-  category.value = expense.category;
-
+    
+    expenses.splice(index, 1);
   
-  expenses.splice(index, 1);
-
-  
-  localStorage.setItem('expenses', JSON.stringify(expenses));
+    
+    localStorage.setItem('expenses', JSON.stringify(expenses));
+}
+ 
 
 
   

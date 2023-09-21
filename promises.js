@@ -19,7 +19,7 @@ function createPost(post){
     return new Promise((resolve,reject)=>{
     setTimeout(()=>{
         posts.push(post);
-        const error=false;
+        const error=true;
          if(!error){
          resolve()
          }else{
@@ -38,40 +38,40 @@ function updateLastUserActivityTime(){
     })
 }
 
-function deleteLastPost(){
-    return new Promise((resolve,reject)=>{
-        setTimeout(()=>{
-            if(posts.length>0){
-                posts.pop();
-                resolve('last post deleted');
-            }else{
-                reject('no posts to delete');
-            }
-        },1000)
-    })
-}
+// function deleteLastPost(){
+//     return new Promise((resolve,reject)=>{
+//         setTimeout(()=>{
+//             if(posts.length>0){
+//                 posts.pop();
+//                 resolve('last post deleted');
+//             }else{
+//                 reject('no posts to delete');
+//             }
+//         },1000)
+//     })
+// }
 
-// createPost({title:'post three',body:'this is post three'})
-// .then(getPosts)
-// .catch(err => console.log(err));
+ createPost({title:'post three',body:'this is post three'})
+ .then(getPosts)
+ .catch(err => console.log(err));
 
 
 //Promise.all
-// const promise1=Promise.resolve('Hello  World');
-// const promise2=10;
-// const promise3=new Promise ((resolve,rejectr)=>
-// setTimeout(resolve,2000,'goodbye')
-// );
+const promise1=Promise.resolve('Hello  World');
+const promise2=10;
+const promise3=new Promise ((resolve,reject)=>
+setTimeout(resolve,2000,'goodbye')
+);
 
-// Promise.all([promise1,promise2,promise3]).then(values=> console.log(values));
+Promise.all([promise1,promise2,promise3]).then(values=> console.log(values));
 
 
-createPost({title:'post three',body:'this is post three'})
-.then(()=>updateLastUserActivityTime())
-.then(()=>deleteLastPost())
-.then(()=>{
-    console.log('post after deleting the last one:');
-    getPosts();
-    console.log('User Last Activity Time:', userLastActivityTime);
-})
-.catch((err)=> console.log(err)); 
+ createPost({title:'post three',body:'this is post three'})
+ .then(()=>updateLastUserActivityTime())
+ //.then(()=>deleteLastPost())
+ .then(()=>{
+     //console.log('post after deleting the last one:');
+   getPosts();
+   console.log('User Last Activity Time:', userLastActivityTime);
+ })
+ .catch((err)=> console.log(err)); 

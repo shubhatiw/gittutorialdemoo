@@ -13,13 +13,13 @@ function getPosts(){
     },1000);
 }
 
-function createPost(post,callback){
+function createPost(post,callbvack){
     setTimeout(()=>{
         posts.push(post);
-        callback();
+    callbvack()
     },2000);
-}
-
+} 
+getPosts();
 
 
 createPost({title:'post three',body:'this is post three'}, getPosts);

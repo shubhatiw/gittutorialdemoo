@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add User Form</title>
+  <link rel="shortcut icon" href="#" />
+  <!-- Bootstrap CSS link -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+  
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">General Store</a>
+  </nav>
+
+  <div class="container mt-4 ">
+    <form id="form">
+      <div class="row">
+        <div class="col-md-2">
+          <label for="itemname" class="input-group-text">Item Name:</label>
+          <input type="text" id="itemname" class="form-control">
+        </div>
+        <div class="col-md-2">
+          <label for="des" class="input-group-text">Description:</label>
+          <input type="text" id="des" class="form-control">
+        </div>
+        <div class="col-md-2">
+          <label for="price" class="input-group-text">Price:</label>
+          <input type="text" id="price" class="form-control">
+        </div>
+        <div class="col-md-2">
+          <label for="quantity" class="input-group-text">Quantity:</label>
+          <input type="number" id="quantity" class="form-control">
+        </div>
+        <div class="col-md-2">
+            <button id="butone" type="submit" class="btn btn-primary mt-3">Add ITEM</button>
+          </div>
+      </div>
+    </form>
+
+    <ul id="ule" class="mt-4"></ul>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="A.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

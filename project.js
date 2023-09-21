@@ -1,8 +1,6 @@
-const axiosInstance1 = axios.create({
-    baseURL : "https://crudcrud.com/api/f92d362c436540caa81fe2d5d3a33c83/generalstore"
-})
-const axiosInstance2 = axios.create({
-    baseURL : "https://crudcrud.com/api/b2dc28afebce498fa8e6296e8781347f/generalstore"
+const axiosInstance = axios.create({
+    baseURL : "https://crudcrud.com/api/05c8f0f075d14a7aa5dd9cfd9626980d/generalstore"
+
 });
 let ul = document.querySelector('.display ul')
 
@@ -93,7 +91,7 @@ async function handleSubmit(e) {
 
 async function renderElements(e) {
     try {
-        let res = `await axiosInstance.get();`
+        let res = await axiosInstance.get();
         if (res.status === 200) {
             res.data.forEach((data) => {
                 let id = data._id;
