@@ -1,7 +1,7 @@
 let myform=document.getElementById("form");
 myform.addEventListener('submit',onsubmit);
-let buttonid=null;
-let bought=false;
+
+
 function onsubmit(e){
     e.preventDefault();
     let obj={
@@ -10,12 +10,12 @@ function onsubmit(e){
         price:document.getElementById('price').value,
         quantity:parseInt(document.getElementById('quantity').value)
     }
-    axios.post('https://crudcrud.com/api/98894d91961d4ec7a966ce8fcdbb86cd/GeneralStore',obj)
+    axios.post('https://crudcrud.com/api/f2536a256e2043759e4e97ea44e8fdc0/GeneralStore',obj)
     .then(response=>displayusers(response.data))
     .catch(err=>console.log(err));
 }
 window.addEventListener('DOMContentLoaded',()=>{
-    axios.get('https://crudcrud.com/api/98894d91961d4ec7a966ce8fcdbb86cd/GeneralStore')
+    axios.get('https://crudcrud.com/api/f2536a256e2043759e4e97ea44e8fdc0/GeneralStore')
   .then(dt=>{
     let len=dt.data.length
     for(let i=0;i<len;i++){
@@ -88,7 +88,7 @@ let buy =() => {
     price:obj.price,
     quantity:updatedquantity
   }
-   axios.put(`https://crudcrud.com/api/98894d91961d4ec7a966ce8fcdbb86cd/GeneralStore/${buttonid}`, obj)
+   axios.put(`https://crudcrud.com/api/f2536a256e2043759e4e97ea44e8fdc0/GeneralStore/${buttonid}`, obj)
       .then(response => {
         location.reload()
       })
